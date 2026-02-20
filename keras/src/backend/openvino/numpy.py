@@ -4264,4 +4264,8 @@ def histogram(x, bins=10, range=None):
         ov_opset.constant([0], Type.i32).output(0),
     )
 
+    
     return OpenVINOKerasTensor(hist.output(0)), OpenVINOKerasTensor(bin_edges)
+    def signbit(x):
+        x = get_ov_output(x)
+        return OpenVINOKerasTensor(ov_opset.less(x, 0).output(0))
